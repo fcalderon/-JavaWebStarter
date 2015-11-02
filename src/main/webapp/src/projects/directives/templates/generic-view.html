@@ -20,8 +20,11 @@
     </md-content>
 
 </div>
-<md-button ng-if="items" class="md-fab md-primary" aria-label="New" ng-click="new()">
-    <md-icon>
-        add
-    </md-icon>
-</md-button>
+<div layout="row" layout-margin layout-fill >
+    <span flex></span>
+    <md-button ng-if="items" class="md-fab md-primary" aria-label="New" ng-click="new()">
+        <md-icon>
+            add
+        </md-icon>
+    </md-button>
+</div>

@@ -6,7 +6,7 @@
                 <div>
                     {{i.projectDescription}}
                 </div>
-                <md-icon class="md-secondary" ng-click="delete('projects.project',i.id)" aria-label="Delete">delete</md-icon>
+                <md-icon class="md-secondary" ng-click="delete(i.id, i.projectName + ' ' + i.projectDescription, $event)" aria-label="Delete">delete</md-icon>
             </div>
             <!--<div ng-transclude></div>-->
         </div>

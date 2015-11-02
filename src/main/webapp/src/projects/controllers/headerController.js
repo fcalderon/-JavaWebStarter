@@ -4,8 +4,8 @@
 (function () {
     'use strict';
     angular.module('projects').controller('HeaderCtrl', [
-        '$scope', '$rootScope', '$location', '$mdSidenav', '$mdBottomSheet', '$q', '$state', 'settings', HeaderCtrl]);
-    function HeaderCtrl($scope, $rootScope, $location, $mdSidenav, $mdBottomSheet, $q, $state, settings) {
+        '$scope', '$rootScope', '$location', '$mdSidenav', '$mdBottomSheet', '$q', '$state', '$resource','settings', HeaderCtrl]);
+    function HeaderCtrl($scope, $rootScope, $location, $mdSidenav, $mdBottomSheet, $q, $state, $resource, settings) {
         var self = this;
 
         self.toggleList = toggleList;
@@ -37,11 +37,15 @@
             });
         }
 
-
+        var session = $resource(settings.apiUrl + 'security/logout', {}, {
+            update: {
+                method: 'PUT'
+            }
+        });
         $scope.logout = function () {
-            Session.get({logout: "logout"}).$promise.then(function (data) {
+            session.get().$promise.then(function (data) {
                 //$location.path(settings.root);
-                window.location.replace(settings.root);
+                window.location.replace("/");
             });
 
         };

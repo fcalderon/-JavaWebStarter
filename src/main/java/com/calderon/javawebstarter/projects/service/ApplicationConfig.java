@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application {
         resources.add(com.calderon.javawebstarter.projects.service.ProjectFacadeREST.class);
         resources.add(com.calderon.javawebstarter.projects.service.UserProjectFacadeREST.class);
         resources.add(com.calderon.javawebstarter.projects.service.UsersFacadeREST.class);
+        resources.add(com.calderon.javawebstarter.projects.service.SecurityFacadeREST.class);
     }
     
 }

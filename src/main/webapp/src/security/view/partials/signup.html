@@ -1,0 +1,50 @@
+<md-content layout="row" layout-md="column" layout-sm="column" layout-fill class="md-padding md-content-c" flex>
+    <md-card flex class="md-padding">
+        <form name="signUpForm" novalidate>
+            <md-card-content>
+                <h2 class="md-title">Sign up</h2>
+
+                <h2 class="md-subhead card-subtitle">Its very easy to sign up!</h2>
+
+                <md-input-container>
+                    <label>First Name</label>
+                    <input ng-model="customer.user.firstName" name="firstName" type="text" ng-required="true"/>
+
+                    <div ng-messages="signUpForm.firstName.$error">
+                        <div ng-message-include="/src/common/view/form-messages.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Last Name</label>
+                    <input ng-model="customer.user.lastName" name="lastName" type="text" ng-required="true"/>
+
+                    <div ng-messages="form.lastName.$error">
+                        <div ng-message-include="/src/common/view/form-messages.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="customer.user.userLogin.username" name="username" type="email" ng-required="true"/>
+
+                    <div ng-messages="signUpForm.username.$error">
+                        <div ng-message-include="/src/common/view/form-messages.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="customer.user.userLogin.password" name="password" type="password"
+                           ng-required="true"/>
+
+                    <div ng-messages="signUpForm.password.$error">
+                        <div ng-message-include="/src/common/view/form-messages.html"></div>
+                    </div>
+                </md-input-container>
+                <md-checkbox ng-model="customer.user.userLogin.acceptedTermsAndConditions" ng-required="true">I accept
+                    the <a>terms and conditions</a></md-checkbox>
+            </md-card-content>
+            <div class="md-controls" layout="row" layout-align="end center">
+                <md-button ng-disabled="signUpForm.$invalid" ng-click="signUp()">Submit</md-button>
+            </div>
+        </form>
+    </md-card>
+</md-content>

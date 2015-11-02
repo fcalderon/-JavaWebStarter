@@ -1,0 +1,51 @@
+<md-content layout="row" layout-md="column" layout-sm="column" layout-fill class="md-padding md-content-c" flex>
+    <md-card flex="66" layout-padding>
+        <form name="loginForm" method="POST" class="" role="form"
+              action="j_security_check" novalidate ng-submit="loginForm.$valid">
+            <md-card-content>
+                <h2 class="md-title">Welcome! Please login</h2>
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="username" name="j_username" type="email" ng-required="true"/>
+
+                    <div ng-messages="loginForm.j_username.$error" role="alert">
+                        <div ng-messages-include="/src/common/view/form-messages.html"></div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="password" name="j_password"
+                           type="password"
+                           ng-minlength="8"
+                           ng-maxlength="100"
+                           required/>
+
+                    <div ng-messages="loginForm.j_password.$error" role="alert">
+                        <div ng-messages-include="/src/common/view/form-messages.html"></div>
+                    </div>
+                </md-input-container>
+            </md-card-content>
+            <div class="md-actions" layout="row" layout-align="top" layout-padding layout-margin>
+                <md-button flex class="md-raised md-primary" type="submit" ng-disabled="loginForm.$invalid">Login
+                </md-button>
+            </div>
+        </form>
+        <div layout="row" layout-align="end center">
+            <md-button class="md-danger" type="button" ng-href="{{'#/forgotPassword'}}">Forgot password?</md-button>
+            <md-button class="md-info" ng-href="{{'#/signUp'}}">Sign up</md-button>
+        </div>
+    </md-card>
+    <md-card flex>
+        <md-card-content>
+            <h2 class="md-title">Current Projects</h2>
+            <md-list>
+                <md-list-item class="md-2-line" ng-repeat="p in projects">
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{p.projectName}}</h3>
+                        <p>{{p.projectDescription}}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</md-content>

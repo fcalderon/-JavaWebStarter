@@ -11,6 +11,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.*;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -31,6 +34,9 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
     @Consumes({"application/json"})
     @Produces({"application/json"})
     public Users createUser(Users entity) {
+        if(entity.getPassword()!=null)
+            entity.setPassword(hashSHA256(entity.getPassword()));
+
         return super.create(entity);
     }
 
@@ -78,6 +84,31 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+
+    private String hashSHA256(String value) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(value.getBytes("UTF-8"));
+            byte[] digest = md.digest();
+
+            StringBuilder sb = new StringBuilder();
+            for (byte aDigest : digest) {
+                String hex = Integer.toHexString(0xff & aDigest);
+                if (hex.length() == 1) {
+                    sb.append('0');
+                }
+                sb.append(hex);
+            }
+            return sb.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
     
 }
