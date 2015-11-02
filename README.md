@@ -35,6 +35,8 @@ Java Web Starter Project with Simple AngularJS App
     * a user and give it a ROLE_ADMIN
 ```
 #!sql
+    CREATE TABLE nope.user_role
+    ( username VARCHAR(100) NOT NULL, role_name VARCHAR(50) NOT NULL);
     SELECT * FROM nope.users;INSERT INTO nope.users
     (username,
     password,
