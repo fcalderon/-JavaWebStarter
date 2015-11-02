@@ -1,0 +1,18 @@
+<generic-view title="Users" sub-title="Active users list" new-state-name="projects.new">
+    <md-list>
+        <md-subheader class="md-no-sticky">{{subTitle}}</md-subheader>
+        <md-list-item flex class="md-2-line" ng-repeat="i in items" ng-click="goToItem('users.user',i.id)">
+
+            <div class="md-list-item-text">
+                <div class="md-list-item-text">
+                    <h3>{{i.firstName}} {{i.lastName}}</h3>
+                    <div>
+                        {{i.username}}
+                    </div>
+                    <md-icon class="md-secondary" ng-click="delete(i.id)" aria-label="Delete">delete</md-icon>
+                </div>
+                <!--<div ng-transclude></div>-->
+            </div>
+        </md-list-item>
+    </md-list>
+</generic-view>

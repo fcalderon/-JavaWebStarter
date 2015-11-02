@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<resources>
+    <Service id="jsonConf" class-name="org.apache.cxf.jaxrs.provider.json.JSONProvider">
+        dropRootElement = true
+        useGettersAsSetters = false
+        dropCollectionWrapperElement=true
+        serializeAsArray = true
+        supportUnwrapped = true
+    </Service>
+</resources>

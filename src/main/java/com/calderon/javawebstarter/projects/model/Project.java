@@ -7,15 +7,7 @@ package com.calderon.javawebstarter.projects.model;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,10 +29,9 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -49,32 +40,32 @@ public class Project implements Serializable {
     @Size(max = 100)
     @Column(name = "projectDescription")
     private String projectDescription;
-    @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 45)
     @Column(name = "projectDate")
-    private String projectDate;
+    private String projectDate = null;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProject")
     private Collection<UserProject> userProjectCollection;
 
     public Project() {
     }
 
-    public Project(Integer id) {
+    public Project(Long id) {
         this.id = id;
     }
 
-    public Project(Integer id, String projectName, String projectDate) {
+    public Project(Long id, String projectName, String projectDate) {
         this.id = id;
         this.projectName = projectName;
         this.projectDate = projectDate;
+
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

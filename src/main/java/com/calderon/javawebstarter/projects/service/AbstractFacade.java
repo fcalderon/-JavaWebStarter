@@ -5,8 +5,8 @@
  */
 package com.calderon.javawebstarter.projects.service;
 
-import java.util.List;
 import javax.persistence.EntityManager;
+import java.util.List;
 
 /**
  *
@@ -21,8 +21,9 @@ public abstract class AbstractFacade<T> {
 
     protected abstract EntityManager getEntityManager();
 
-    public void create(T entity) {
+    public T create(T entity) {
         getEntityManager().persist(entity);
+        return entity;
     }
 
     public void edit(T entity) {

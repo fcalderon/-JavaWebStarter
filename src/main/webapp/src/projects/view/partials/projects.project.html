@@ -1,0 +1,26 @@
+<generic-view title="Project" sub-title="">
+    <form name="projectForm">
+        <md-input-container>
+            <label>Name</label>
+            <input ng-model="item.projectName" name="name" type="text" ng-required/>
+
+            <div ng-messages="projectForm.name.$error">
+                <div ng-message="required">
+                    This field is required
+                </div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Description</label>
+            <textarea ng-model="item.projectDescription" name="description" ng-required></textarea>
+
+            <div ng-messages="projectForm.description.$error">
+                <div ng-message="required">
+                    This field is required
+                </div>
+            </div>
+        </md-input-container>
+        <md-button ng-click="save()">Save</md-button>
+    </form>
+
+</generic-view>

@@ -35,15 +35,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
     @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
-    @NamedQuery(name = "Users.findByUserscol", query = "SELECT u FROM Users u WHERE u.userscol = :userscol"),
     @NamedQuery(name = "Users.findByFirstName", query = "SELECT u FROM Users u WHERE u.firstName = :firstName"),
     @NamedQuery(name = "Users.findByLastName", query = "SELECT u FROM Users u WHERE u.lastName = :lastName")})
 public class Users implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
@@ -55,9 +53,6 @@ public class Users implements Serializable {
     @Size(min = 1, max = 256)
     @Column(name = "password")
     private String password;
-    @Size(max = 45)
-    @Column(name = "userscol")
-    private String userscol;
     @Size(max = 45)
     @Column(name = "firstName")
     private String firstName;
@@ -102,14 +97,6 @@ public class Users implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getUserscol() {
-        return userscol;
-    }
-
-    public void setUserscol(String userscol) {
-        this.userscol = userscol;
     }
 
     public String getFirstName() {

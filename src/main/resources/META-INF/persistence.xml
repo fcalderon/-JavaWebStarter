@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="com.calderon_JavaWebStarter_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="javawebstarterpu" transaction-type="JTA">
+    <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
     <class>com.calderon.javawebstarter.projects.model.Project</class>
     <class>com.calderon.javawebstarter.projects.model.UserProject</class>
     <class>com.calderon.javawebstarter.projects.model.Users</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/nope?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="Pass1234"/>
+      <property name="openjpa.ConnectionFactoryName"
+                value="java:comp/env/jdbc/nope"/>
+        <property name="openjpa.jdbc.SynchronizeMappings"
+                  value="buildSchema(ForeignKeys=true)"/>
+
+        <property name="openjpa.DynamicEnhancementAgent" value="true"/>
+
+
+        <property name="openjpa.Log" value="DefaultLevel=TRACE, Runtime=TRACE, Tool=INFO, SQL=TRACE"/>
+        <property name="openejb.jpa.init-entitymanager" value="true" />
+
+        <property name="openjpa.ConnectionFactoryProperties"
+                  value="PrettyPrint=true,
+                      PrettyPrintLineLength=72,
+                      PrintParameters=true,
+                      MaxActive=10,
+                      MaxIdle=5,
+                      MinIdle=2,
+                      MaxWait=60000"/>
+
     </properties>
   </persistence-unit>
 </persistence>

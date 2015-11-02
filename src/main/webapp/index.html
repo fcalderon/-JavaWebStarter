@@ -1,10 +1,135 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+<html ng-app="projects">
+<head>
+    <title ng-bind="$state.current.data.pageTitle"></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Starter Project">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- Angular Material CSS now available via Google CDN; version 0.10 used here -->
+    <link rel="stylesheet"
+          href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body layout="row" ng-controller="HeaderCtrl as headerCtrl">
+<!--<div >-->
+<!--<div id="site-main-nav">-->
+<md-sidenav class="md-sidenav-left md-whiteframe-z3"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-md')" layout="column" layout-fill flex>
+
+    <md-toolbar class="md-tall md-hue-2 md-whiteframe-z1">
+        <span flex></span>
+        <div layout="column" class="md-toolbar-tools-bottom inset">
+            <span></span>
+
+            <div>{{sessionData.user.firstName}} {{sessionData.user.lastName}}</div>
+            <div>{{sessionData.user.userLogin.username}}</div>
+        </div>
+    </md-toolbar>
+    <md-list flex>
+        <md-list-item ng-click="go('/home', 'Home')"
+                      ng-class="{'selected' :  $state.current.data.pageTitle === 'Home'}">
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                <div class="inset">
+                    <md-icon>home</md-icon>
+                </div>
+                <div class="inset">
+                    Home
+                </div>
+            </md-item-content>
+        </md-list-item>
+        <md-list-item ng-click="go('/projects', 'Projects')"
+                      ng-class="{'selected' :  $state.current.data.pageTitle === 'Projects'}">
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                <div class="inset">
+                    <md-icon>today</md-icon>
+                </div>
+                <div class="inset">
+                    Projects
+                </div>
+            </md-item-content>
+        </md-list-item>
+        <md-list-item ng-click="go('/users', 'Users')"
+                      ng-class="{'selected' :  $state.current.data.pageTitle === 'Users'}">
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                <div class="inset">
+                    <md-icon>directions_car</md-icon>
+                </div>
+                <div class="inset">
+                    Users
+                </div>
+            </md-item-content>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-subheader>Management</md-subheader>
+        <md-list-item ng-click="go('/account', 'Account')"
+                      ng-class="{'selected' :  $state.current.data.pageTitle === 'Account'}">
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                <div class="inset">
+                    <md-icon>settings</md-icon>
+                </div>
+                <div class="inset">
+                    Account
+                </div>
+            </md-item-content>
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item ng-click="logout()">
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                <div class="inset">
+                    <md-icon>power_settings_new</md-icon>
+                </div>
+                <div class="inset">
+                    Log Out
+                </div>
+            </md-item-content>
+        </md-list-item>
+    </md-list>
+</md-sidenav>
+
+<div flex layout="column" layout-fill tabIndex="-1" role="main" class="main-layout">
+    <md-toolbar layout="row" class="md-whiteframe-z1">
+        <md-button class="menu" hide-gt-md ng-click="headerCtrl.toggleList()" aria-label="Show Side Nav">
+            <md-icon>menu</md-icon>
+        </md-button>
+        <h1 ng-bind="$state.current.data.pageTitle"></h1>
+    </md-toolbar>
+
+    <!--<div ng-view></div>-->
+    <div flex layout="row" layout-align="center">
+        <div flex="66" layout="column">
+            <div ui-view class="anim-in-out anim-fade" data-anim-speed="500"
+                 ng-style="{'-webkit-transition-duration': speed + 'ms','-moz-transition-duration': speed + 'ms','-ms-transition-duration': speed + 'ms','-o-transition-duration': speed + 'ms','transition-duration': speed + 'ms'}"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Angular Material Dependencies -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-messages.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
+
+<script src="../bower/bower_components/gsap/src/minified/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+<!--<script src="../bower/bower_components/ngFx/dist/ngFx.min.js"></script>-->
+<script src="../assets/angular-ui-router-anim/anim-in-out.js"></script>
+
+
+<!-- Angular Material Javascript now available via Google CDN; version 0.10 used here -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.js"></script>
+<script src="src/projects/projects.js"></script>
+<script src="src/projects/controllers/genericController.js"></script>
+<script src="src/projects/controllers/homeController.js"></script>
+<script src="src/projects/controllers/headerController.js"></script>
+<script src="src/projects/directives/genericListDirective.js"></script>
+<script src="src/projects/directives/genericViewDirective.js"></script>
+
+</body>
 </html>

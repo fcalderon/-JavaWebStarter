@@ -1,0 +1,15 @@
+<generic-view title="Projects" new-state-name="projects.new">
+    <md-list-item flex class="md-2-line" ng-repeat="i in items" ng-click="goToItem('projects.project',i.id)">
+        <div class="md-list-item-text">
+            <div class="md-list-item-text">
+                <h3>{{i.projectName}}</h3>
+                <div>
+                    {{i.projectDescription}}
+                </div>
+                <md-icon class="md-secondary" ng-click="delete('projects.project',i.id)" aria-label="Delete">delete</md-icon>
+            </div>
+            <!--<div ng-transclude></div>-->
+        </div>
+    </md-list-item>
+
+</generic-view>

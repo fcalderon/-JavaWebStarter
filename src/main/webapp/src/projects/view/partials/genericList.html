@@ -1,0 +1,23 @@
+<div layout="row" layout-margin layout-fill layout-align="center center">
+    <md-content layout="row" layout-md="column" layout-sm="column" layout-fill class="md-padding md-content-c" flex>
+        <md-card flex>
+            <md-card-content>
+                <md-toolbar class="md-hue-3">
+                    <div class="md-toolbar-tools">
+                        <h2 flex>
+                            <span>{{view.title}}</span>
+                        </h2>
+                        <span></span>
+                        <md-button class="md-icon-button" aria-label="Favorite">
+                            <md-icon>settings</md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <h2 class="md-subhead card-subtitle" ng-if="view.subTitle">{{view.subTitle}}</h2>
+                <md-list>
+
+                </md-list>
+            </md-card-content>
+        </md-card>
+    </md-content>
+</div>

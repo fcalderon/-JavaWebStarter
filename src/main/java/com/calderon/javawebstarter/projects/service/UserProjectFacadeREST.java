@@ -6,27 +6,21 @@
 package com.calderon.javawebstarter.projects.service;
 
 import com.calderon.javawebstarter.projects.model.UserProject;
-import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import java.util.List;
 
 /**
  *
  * @author francisco
  */
 @Stateless
-@Path("com.calderon.javawebstarter.projects.model.userproject")
+@Path("userprojects")
 public class UserProjectFacadeREST extends AbstractFacade<UserProject> {
-    @PersistenceContext(unitName = "com.calderon_JavaWebStarter_war_1.0-SNAPSHOTPU")
+    @PersistenceContext(unitName = "javawebstarterpu")
     private EntityManager em;
 
     public UserProjectFacadeREST() {
@@ -34,15 +28,16 @@ public class UserProjectFacadeREST extends AbstractFacade<UserProject> {
     }
 
     @POST
-    @Override
-    @Consumes({"application/xml", "application/json"})
-    public void create(UserProject entity) {
+    @Consumes({"application/json"})
+    @Produces({"application/json"})
+    public UserProject createUserProject(UserProject entity) {
         super.create(entity);
+        return entity;
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({"application/xml", "application/json"})
+    @Consumes({"application/json"})
     public void edit(@PathParam("id") Integer id, UserProject entity) {
         super.edit(entity);
     }
@@ -55,21 +50,21 @@ public class UserProjectFacadeREST extends AbstractFacade<UserProject> {
 
     @GET
     @Path("{id}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json"})
     public UserProject find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json"})
     public List<UserProject> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/json"})
     public List<UserProject> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

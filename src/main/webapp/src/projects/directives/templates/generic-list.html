@@ -1,0 +1,11 @@
+<generic-view title="{{title}}" sub-title="{{subTitle}}">
+    <md-list>
+        <p>Helloo</p>
+        <md-list-item flex class="md-2-line" ng-repeat="i in items" ng-click="goToItem(i.id)">
+            <div class="md-list-item-text">
+                <div ng-bind-html="template"></div>
+                <!--<div ng-transclude></div>-->
+            </div>
+        </md-list-item>
+    </md-list>
+</generic-view>

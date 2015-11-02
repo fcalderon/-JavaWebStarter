@@ -5,14 +5,14 @@
  */
 package com.calderon.javawebstarter.projects.service;
 
-import java.util.Set;
 import javax.ws.rs.core.Application;
+import java.util.Set;
 
 /**
  *
  * @author francisco
  */
-@javax.ws.rs.ApplicationPath("webresources")
+@javax.ws.rs.ApplicationPath("api")
 public class ApplicationConfig extends Application {
 
     @Override

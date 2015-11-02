@@ -1,0 +1,45 @@
+<generic-view title="User" sub-title="">
+    <form name="userForm">
+        <md-input-container>
+            <label>First Name</label>
+            <input ng-model="item.firstName" name="firstName" type="text" ng-required/>
+
+            <div ng-messages="userForm.firstName.$error">
+                <div ng-message="required">
+                    This field is required
+                </div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Last Name</label>
+            <input ng-model="item.lastName" name="lastName" type="text" ng-required/>
+
+            <div ng-messages="userForm.lastName.$error">
+                <div ng-message="required">
+                    This field is required
+                </div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Email</label>
+            <input ng-model="item.username" name="username" type="email" ng-required/>
+
+            <div ng-messages="userForm.username.$error">
+                <div ng-message="required">
+                    This field is required
+                </div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Password</label>
+            <input ng-model="item.password" name="password" type="password" ng-required/>
+
+            <div ng-messages="userForm.password.$error">
+                <div ng-message="required">
+                    This field is required
+                </div>
+            </div>
+        </md-input-container>
+        <md-button ng-click="save()">Save</md-button>
+    </form>
+</generic-view>
