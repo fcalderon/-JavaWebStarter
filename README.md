@@ -34,9 +34,11 @@ Java Web Starter Project with Simple AngularJS App
     * OpenJPA might get cranky because it wants entities to be enhanced, this is
     trivial, just add the following lines of code at the end of the `catalina.properties` file.
     ```
+    ...
     openejb.jpa.deploy-time-enhancement=true
     openejb.jar.enhancement.include=com/calderon/javawebstarter/model/*.class
     openejb.jar.enhancement.exclude=com/calderon/javawebstarter/model/listener/*.class
+    ...
     ```
     * webapp should create tables in your db
     * a user and give it a ROLE_ADMIN
