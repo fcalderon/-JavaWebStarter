@@ -26,7 +26,7 @@ Java Web Starter Project with Simple AngularJS App
 ...
 </tomee>
 ```
-* mysql jdbc driver in `{tome_home}/bin`
+* drop the mysql jdbc driver in `{tome_home}/bin`
 * Dependencies: all dependencies are specified in the `pom.xml`
 * Database configuration: Create a database called nope
 * Deployment instructions: run `mvn clean install` and drop the war in `{tome_home}/webapps`
