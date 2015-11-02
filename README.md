@@ -30,6 +30,9 @@ Java Web Starter Project with Simple AngularJS App
 * Dependencies: all dependencies are specified in the `pom.xml`
 * Database configuration: Create a database called nope
 * Deployment instructions: run `mvn clean install` and drop the war in `{tome_home}/webapps`
+        * start TomEE
+        * The webapp should create tables in your db
+        * insert a user and give it a ROLE_ADMIN
 
 ### Contribution guidelines ###
 
