@@ -70,5 +70,5 @@ Java Web Starter Project with Simple AngularJS App
 * Coming soon
 ### Who do I talk to? ###
 
-* Repo owner or admin
+* Repo owner or admin (please don't hesitate')
 * Other community or team contact
