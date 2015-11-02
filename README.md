@@ -64,7 +64,7 @@ Java Web Starter Project with Simple AngularJS App
     'ROLE_ADMIN');
 ```
 ### Tests ###
-* Coming soon
+* Coming soon -
 ### Contribution guidelines ###
 
 * Coming soon
