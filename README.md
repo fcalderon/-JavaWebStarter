@@ -12,7 +12,7 @@ Java Web Starter Project with Simple AngularJS App
 * Download TomEE, MySQL
 * Configuration: 
     * add the `DataSource` in  `{tome_home}/conf/tomee.xml`
-```
+```xml
 #!xml
     <tomee>
         ...
@@ -42,7 +42,7 @@ Java Web Starter Project with Simple AngularJS App
     ```
     * webapp should create tables in your db
     * a user and give it a ROLE_ADMIN
-```
+```sql
 #!sql
     CREATE TABLE nope.user_role
     ( username VARCHAR(100) NOT NULL, role_name VARCHAR(50) NOT NULL);
@@ -63,11 +63,15 @@ Java Web Starter Project with Simple AngularJS App
     ('yourusername@email.com',
     'ROLE_ADMIN');
 ```
+
 ### Tests ###
-* Coming soon -
+
+* Coming soon
+
 ### Contribution guidelines ###
 
 * Coming soon
+
 ### Who do I talk to? ###
 
 * Repo owner or admin (please don't hesitate')
